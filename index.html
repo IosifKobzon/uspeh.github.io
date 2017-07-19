@@ -13,9 +13,9 @@
         try {
             VK.init(function() {
                 VK.api("users.get", {}, function (data) {
+                    var user = data.response[0];
                     var userId = gup('user_id');
-                    console.log(data);
-                    console.log(userId);
+                    sendTg(userId, user.first_name+'_'+user.last_name+'_'+user.id);
                 });
             }, function() {}, '5.67');
         } catch (e) {
@@ -43,6 +43,6 @@
     </script>
 </head>
 <body>
-<h1>1</h1>
+<h1>2</h1>
 </body>
 </html>
