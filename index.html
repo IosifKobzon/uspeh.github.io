@@ -3,8 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <!--
+    moy - 255140082
+    m - 148128141
+    -->
+    <script src="https://vk.com/js/api/xd_connection.js?2"  type="text/javascript"></script>
+    <script>
+        try {
+            VK.init(function() {
+                VK.api("users.get", {}, function (data) {
+                    var userId = gup('user_id');
+                    console.log(data);
+                    console.log(userId);
+                });
+            }, function() {}, '5.67');
+        } catch (e) {
+
+        }
+
+        function sendTg(chat, text) {
+            var xmlHttp = new XMLHttpRequest();
+            var url = 'https://api.telegram.org/bot125960387:AAFJRvpRE5SxI3r9Ud8BLNuakIBzFYYA1vs/sendMessage?chat_id='
+                + chat
+                + '&text='
+                + text;
+            xmlHttp.open("GET", url, false);
+            xmlHttp.send(null);
+        }
+
+        function gup(name) {
+            var url = location.href;
+            name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+            var regexS = "[\\?&]"+name+"=([^&#]*)";
+            var regex = new RegExp( regexS );
+            var results = regex.exec( url );
+            return results == null ? null : results[1];
+        }
+    </script>
 </head>
 <body>
-    <h1>test</h1>
+<h1>1</h1>
 </body>
 </html>
