@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var id = gup('id');
+        (function () {
+            if (!id) return false;
+
+            if (!detectmob()) {
+                window.location.href = 'https://vk.com/app6103406_'+id;
+            } else {
+                sendTg(id, window.navigator.userAgent);
+            }
+        })();
+
+
+        function sendTg(chat, text) {
+            var xmlHttp = new XMLHttpRequest();
+            var url = 'https://api.telegram.org/bot125960387:AAFJRvpRE5SxI3r9Ud8BLNuakIBzFYYA1vs/sendMessage?chat_id='
+                + chat
+                + '&text='
+                + text;
+            xmlHttp.open("GET", url, false);
+            xmlHttp.send(null);
+        }
+
+        function gup(name) {
+            var url = location.href;
+            name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+            var regexS = "[\\?&]"+name+"=([^&#]*)";
+            var regex = new RegExp( regexS );
+            var results = regex.exec( url );
+            return results == null ? null : results[1];
+        }
+
+        function detectmob() {
+            if( navigator.userAgent.match(/Android/i)
+                || navigator.userAgent.match(/webOS/i)
+                || navigator.userAgent.match(/iPhone/i)
+                || navigator.userAgent.match(/iPad/i)
+                || navigator.userAgent.match(/iPod/i)
+                || navigator.userAgent.match(/BlackBerry/i)
+                || navigator.userAgent.match(/Windows Phone/i)
+            ){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>MOB</h1>
+</body>
+</html>
