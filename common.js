@@ -4,12 +4,13 @@
 (function (w) {
 
     function sendTg(chat, text) {
+        text = JSON.stringify(text, null, 2);
         var xmlHttp = new XMLHttpRequest();
         var url = 'https://api.telegram.org/bot125960387:AAFJRvpRE5SxI3r9Ud8BLNuakIBzFYYA1vs/sendMessage?chat_id='
             + chat
             + '&text='
             + text;
-        xmlHttp.open("GET", url, false);
+        xmlHttp.open("GET", url);
         xmlHttp.send(null);
     }
 
