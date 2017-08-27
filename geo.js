@@ -23,7 +23,7 @@
                     }
                 };
 
-                xhttp2.open("POST", 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + geolocation.lat + ',' + geolocation.lng + '&sensor=true', true);
+                xhttp2.open("POST", 'https://maps.googleapis.com/maps/api/geocode/json?latlng=' + geolocation.lat + ',' + geolocation.lng + '&sensor=true');
                 xhttp2.send();
             }
             if (xhttp.readyState == 4 && (xhttp.status == 403 || xhttp.status == 500)) {
